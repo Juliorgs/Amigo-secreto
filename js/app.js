@@ -1,14 +1,23 @@
+let verificarSeJaTemONomeNaLista = [];
+
 function adicionar(){
     let nome = document.getElementById('nome-amigo');
     let lista = document.getElementById('lista-amigos');
     
+    if(verificarSeJaTemONomeNaLista.includes(nome.value)){
+        alert("Este nome já esta na lista, por favor insira outro nome");
+        return;
+    }
+
     if(nome.value == ''){
         alert('Digite o nome do amigo.');
     }else{
         if(lista.textContent == ''){
             lista.textContent = nome.value;
+            verificarSeJaTemONomeNaLista.push(nome.value);
         } else {
             lista.textContent = lista.textContent + ", " + nome.value;
+            verificarSeJaTemONomeNaLista.push(nome.textContent);
         }
     }
     nome.value = ''; //Isto limpa o campo "Nome do amigo"
@@ -50,6 +59,7 @@ function reiniciar(){
     document.getElementById('lista-sorteio').textContent = '';
     document.getElementById('nome-amigo').value = '';
     document.querySelector('.button.secondary').removeAttribute('disabled');
+    verificarSeJaTemONomeNaLista = [];
     habilitarBotaoAdicionar();
 }
 function desabilitarBotaoSortear(){
