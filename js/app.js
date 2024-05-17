@@ -3,8 +3,9 @@ let verificarSeJaTemONomeNaLista = [];
 function adicionar(){
     let nome = document.getElementById('nome-amigo');
     let lista = document.getElementById('lista-amigos');
-    
-    if(verificarSeJaTemONomeNaLista.includes(nome.value)){
+    let verificador = nome.value.toLowerCase()
+
+    if(verificarSeJaTemONomeNaLista.includes(verificador)){
         alert("Este nome já esta na lista, por favor insira outro nome");
         return;
     }
@@ -17,7 +18,7 @@ function adicionar(){
             verificarSeJaTemONomeNaLista.push(nome.value);
         } else {
             lista.textContent = lista.textContent + ", " + nome.value;
-            verificarSeJaTemONomeNaLista.push(nome.textContent);
+            verificarSeJaTemONomeNaLista.push(nome.value);
         }
     }
     nome.value = ''; //Isto limpa o campo "Nome do amigo"
