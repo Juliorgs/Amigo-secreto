@@ -1,5 +1,3 @@
-desabilitarBotaoSortear();
-
 function adicionar(){
     let nome = document.getElementById('nome-amigo');
     let lista = document.getElementById('lista-amigos');
@@ -11,7 +9,6 @@ function adicionar(){
             lista.textContent = nome.value;
         } else {
             lista.textContent = lista.textContent + ", " + nome.value;
-            document.querySelector('.button.secondary').removeAttribute('disabled');
         }
     }
     nome.value = ''; //Isto limpa o campo "Nome do amigo"
@@ -23,6 +20,11 @@ function sortear(){
     let indiceNovaListaNomes = [];
     let numeroSorteado = Math.floor(Math.random() * listaNomes.length);
     let novaListaNomes = [];
+
+    if(listaNomes.length < 4){
+        alert("Voce precisa inserir pelo menos 4 nomes para o sorteio")
+        return;
+    }
 
     for(let i = 0; i < listaNomes.length; i++){
         while(indiceNovaListaNomes.includes(numeroSorteado)){
@@ -47,7 +49,7 @@ function reiniciar(){
     document.getElementById('lista-amigos').textContent = '';
     document.getElementById('lista-sorteio').textContent = '';
     document.getElementById('nome-amigo').value = '';
-    desabilitarBotaoSortear();
+    document.querySelector('.button.secondary').removeAttribute('disabled');
     habilitarBotaoAdicionar();
 }
 function desabilitarBotaoSortear(){
