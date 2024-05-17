@@ -15,10 +15,10 @@ function adicionar(){
     }else{
         if(lista.textContent == ''){
             lista.textContent = nome.value;
-            verificarSeJaTemONomeNaLista.push(nome.value);
+            verificarSeJaTemONomeNaLista.push(nome.value.toLowerCase());
         } else {
             lista.textContent = lista.textContent + ", " + nome.value;
-            verificarSeJaTemONomeNaLista.push(nome.value);
+            verificarSeJaTemONomeNaLista.push(nome.value.toLowerCase());
         }
     }
     nome.value = ''; //Isto limpa o campo "Nome do amigo"
